@@ -26,7 +26,7 @@ do
     DL_COMPLETED=`$REMOTE  --torrent $TORRENTID --info | grep "Percent Done: 100%"`
 
     # check torrents current state is
-    STATE_STOPPED=`$REMOTE  --torrent $TORRENTID --info | grep "State: Seeding\|Stopped\|Finished\|Idle"`
+    STATE_STOPPED=`$REMOTE  --torrent $TORRENTID --info | grep "State: Seeding\|Stopped\|Finished\|Idle\|Error: No data found!"`
     echo $STATE_STOPPED
 
     # if the torrent is "Stopped", "Finished", or "Idle after downloading 100%"
