@@ -13,7 +13,7 @@ REMOTE="sudo transmission-remote"
 $REMOTE -l | awk '{print $10 }' >> /home/pi/completed$(date +%F).txt
 echo "Completed Torrents" | mutt  -s  "Completed torrents" ilovemrsbaum@gmail.com -a /home/pi/completed$(date +%F).txt
 
-TORRENTLIST=`$REMOTE --list | sed -e '1d;$d;s/^ *//' | cut --only-delimited --delimiter=" " --fields=1 |grep -v '*'`
+TORRENTLIST=`$REMOTE --list | sed -e '1d;$d;s/^ *//' | cut --only-delimited --delimiter=" " --fields=1 | grep -v '*'`
 
 $REMOTE --list
 
