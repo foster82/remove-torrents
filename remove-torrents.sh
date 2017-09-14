@@ -14,7 +14,7 @@ $REMOTE -l | awk '{print $10 }' >> /home/pi/completed$(date +%F).txt
 echo "Completed Torrents" | mutt  -s  "Completed torrents" ilovemrsbaum@gmail.com -a /home/pi/completed$(date +%F).txt
 
 TORRENTLISTS=`$REMOTE --list | sed -e '1d;$d;s/^ *//'  | cut --only-delimited --delimiter=" " --fields=1 `
-TORRENTLIST= grep -v '*' <<< $TORRENTLISTS
+TORRENTLIST= echo "$TORRENTLISTS" | grep -v '*' 
 $REMOTE --list
 
 # for each torrent in the list
